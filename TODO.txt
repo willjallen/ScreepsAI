@@ -1,0 +1,12 @@
+- Room Manager
+- Queue for spawns w/ variable creep skillset based on energy i/o
+- Queue for construction
+- Energy i/o telemetry
+
+Added Commit V 1.0:
+- Multi room support w/ highway
+- Resource tracking
+- Spawning pipeline
+- Construction pipeline
+- Creep death handling
+- Better energy_collector
