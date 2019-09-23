@@ -61,6 +61,8 @@ var roomTask = {
     //   First time load   //
     /***********************/
 
+    // Each room will get an ideal construction layout, based on pre computations
+
     // Per room
     for(const room in Game.rooms){
       if(!Game.rooms[room].memory.energy_collector_network_set){

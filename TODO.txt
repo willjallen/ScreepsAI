@@ -10,3 +10,5 @@ Added Commit V 1.0:
 - Construction pipeline
 - Creep death handling
 - Better energy_collector
+
+Pre-Runtime computation of terrain and construction location

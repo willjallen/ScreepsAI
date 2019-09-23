@@ -1,22 +1,22 @@
-function initateEmpire(homeRoom){
+function initateEmpire(){
 
   //*************************
   //  General Empire Init  //
   //************************
 
-  memoryObj = Game.rooms[homeRoom].memory;
-  memoryObj.empire.empireInitiated = true;
+
+  memory.empire.empireInitiated = true;
 
   // Init the empire memory
-  memoryObj.empire.rooms = {[]};
-  memoryObj.empire.resources = {[]};
-  memoryObj.empire.creeps = {[]};
+  memory.empire.rooms = {[]};
+  memory.empire.resources = {[]};
+  memory.empire.creeps = {[]};
 
   // Init the pipeline memory
-  memoryObj.pipeline.creep_spawn = {[]};
-  memoryObj.pipeline.resource_hauling = {[]}; //Computationally the most complex, paradigm everything is baked into memory except resource is dynamic
-  memoryObj.pipeline.construction = {[]};
-  memoryObj.pipeline.repair = {[]};
+  memory.pipeline.creep_spawn = {[]};
+  memory.pipeline.resource_hauling = {[]}; //Computationally the most complex, paradigm everything is baked into memory except resource is dynamic
+  memory.pipeline.construction = {[]};
+  memory.pipeline.repair = {[]};
 
   //*************************
   //  General Empire Init  //
@@ -25,45 +25,59 @@ function initateEmpire(homeRoom){
 
 }
 
-//empire constants or something
-var totalWorkers = 0;
-var workerEnergyCollectors = 0;
-var workerStockpileBuilders = 0;
-var workerRoomUpgrader = 0;
-var workerStructureRepairer = 0;
-var workerResourceHauler = 0;
+function updateEmpireConstants(){
 
-for(const name in Game.creeps) {
-      var creep = Game.creeps[name];
-      if (creep.memory.type == 'worker'){
-        totalWorkers++;
-        if(creep.memory.role == 'energy_collector'){
-          workerEnergyCollectors++;
+
+
+
+  //** Empire General Stats **//
+
+
+  //** Empire Resource Stats **//
+
+
+  //** Empire Creep Stats **//
+
+  var totalWorkers = 0;
+  var workerEnergyCollectors = 0;
+  var workerStockpileBuilders = 0;
+  var workerRoomUpgrader = 0;
+  var workerStructureRepairer = 0;
+  var workerResourceHauler = 0;
+
+  for(const name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if (creep.memory.type == 'worker'){
+          totalWorkers++;
+          if(creep.memory.role == 'energy_collector'){
+            workerEnergyCollectors++;
+          }
+          if(creep.memory.role == 'stockpile_builder'){
+            workerStockpileBuilders++;
+          }
+          if(creep.memory.role == 'room_upgrader'){
+            workerRoomUpgrader++;
+          }
+          if(creep.memory.role == 'structure_repairer'){
+            workerStructureRepairer++;
+          }
+          if(creep.memory.role == 'resource_hauler'){
+            workerResourceHauler++;
+          }
         }
-        if(creep.memory.role == 'stockpile_builder'){
-          workerStockpileBuilders++;
-        }
-        if(creep.memory.role == 'room_upgrader'){
-          workerRoomUpgrader++;
-        }
-        if(creep.memory.role == 'structure_repairer'){
-          workerStructureRepairer++;
-        }
-        if(creep.memory.role == 'resource_hauler'){
-          workerResourceHauler++;
-        }
-      }
+
+  }
+
+
+  memory.empire.stats.creeps.total_workers = totalWorkers;
+  memory.empire.stats.creeps.worker_energy_harvester = workerEnergyCollectors;
+  memory.empire.stats.creeps.worker_builder = workerStockpileBuilders;
+  memory.empire.stats.creeps.worker_room_upgrader = workerRoomUpgrader;
+  memory.empire.stats.creeps.worker_structure_repairer = workerStructureRepairer;
+  memory.empire.stats.creeps.worker_resource_hauler = workerResourceHauler;
+
 
 }
-
-
-room.memory.totalWorkers = totalWorkers;
-room.memory.workerEnergyCollectors = workerEnergyCollectors;
-room.memory.workerStockpileBuilders = workerStockpileBuilders;
-room.memory.workerRoomUpgraders = workerRoomUpgrader;
-room.memory.workerStructureRepairers = workerStructureRepairer;
-room.memory.workerResourceHaulers = workerResourceHauler;
-
 
 
 var empireTask = {
@@ -78,6 +92,11 @@ var empireTask = {
     if(!Game.rooms[homeRoom].memory.empire.empireInitiated){
       initiateEmpire(homeRoom);
     }
+
+    // HomeRoom needs to upgrade as fast as possible
+
+
+
 
 
   };
