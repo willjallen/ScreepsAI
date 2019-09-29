@@ -19,7 +19,7 @@ function clearDeadCreeps(){
   for(const creepMem in Memory.creeps){
 
     if(Game.creeps[creepMem] === undefined){
-      // empire clear or something
+      // empire clear or something to clear worker spots
      delete Memory.creeps[creepMem];
 
      var workerSpots = room.memory.energySources.workerSpots;

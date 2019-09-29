@@ -13,10 +13,13 @@ function genWorkerName(role){
 
 function addCreep(creepType){
   // Based on the type given, create the best possible creep given room extension energy
+  Memory.empire.spawnPipeline
 }
 
 var creepSpawnPipeline = {
   run: function(){
+      // ** MAIN LOOP **
+      // If there are creeps to be spawned
 
 
 
